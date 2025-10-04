@@ -20,27 +20,25 @@ const RoomHeader = ({ roomName, roomId }: RoomHeaderProps) => {
   };
 
   return (
-    <header className="bg-card border-b border-border px-4 py-3">
+    <header className="bg-background border-b-4 border-foreground px-4 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center space-x-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-primary">
-            <Video className="w-5 h-5 text-white" />
+          <div className="flex items-center justify-center w-12 h-12 bg-foreground">
+            <Video className="w-6 h-6 text-background" />
           </div>
           <div>
-            <h1 className="font-semibold text-lg">
+            <h1 className="font-black text-xl uppercase">
               {roomName || 'Untitled Room'}
             </h1>
-            <p className="text-xs text-muted-foreground">Room ID: {roomId.slice(0, 8)}</p>
+            <p className="text-xs font-bold text-muted-foreground">ID: {roomId.slice(0, 8)}</p>
           </div>
         </div>
         <Button 
           onClick={handleShare}
-          variant="outline"
-          size="sm"
-          className="gap-2"
+          className="gap-2 bg-foreground text-background hover:bg-background hover:text-foreground border-4 border-foreground font-black uppercase"
         >
           <Share2 className="w-4 h-4" />
-          Share Room
+          Share
         </Button>
       </div>
     </header>

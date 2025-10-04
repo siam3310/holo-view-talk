@@ -122,19 +122,19 @@ const VideoPlayer = ({ hlsUrl }: VideoPlayerProps) => {
 
   return (
     <div className="w-full h-full flex flex-col bg-black">
-      <div className="bg-card p-4 border-b border-border">
+      <div className="bg-background p-4 border-b-4 border-foreground">
         <div className="flex items-center gap-4">
-          <Label htmlFor="player-select" className="text-sm font-medium whitespace-nowrap">
-            Video Player:
+          <Label htmlFor="player-select" className="text-sm font-black uppercase whitespace-nowrap">
+            Player:
           </Label>
           <Select value={selectedPlayer} onValueChange={(value) => setSelectedPlayer(value as PlayerType)}>
-            <SelectTrigger id="player-select" className="w-[180px]">
+            <SelectTrigger id="player-select" className="w-[180px] border-4 border-foreground font-bold focus:ring-0">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent className="bg-popover">
-              <SelectItem value="videojs">Video.js (Default)</SelectItem>
-              <SelectItem value="hlsjs">HLS.js</SelectItem>
-              <SelectItem value="native">Native HTML5</SelectItem>
+            <SelectContent className="bg-background border-4 border-foreground">
+              <SelectItem value="videojs" className="font-bold">Video.js</SelectItem>
+              <SelectItem value="hlsjs" className="font-bold">HLS.js</SelectItem>
+              <SelectItem value="native" className="font-bold">Native HTML5</SelectItem>
             </SelectContent>
           </Select>
         </div>

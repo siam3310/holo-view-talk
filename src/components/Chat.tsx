@@ -137,32 +137,32 @@ const Chat = ({ roomId }: ChatProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-card">
-      <div className="p-4 border-b border-border">
-        <h2 className="font-semibold text-lg">Live Chat</h2>
-        <p className="text-sm text-muted-foreground">{messages.length} messages</p>
+    <div className="h-full flex flex-col bg-background border-l-4 border-foreground">
+      <div className="p-4 border-b-4 border-foreground">
+        <h2 className="font-black text-xl uppercase">Live Chat</h2>
+        <p className="text-sm font-bold text-muted-foreground">{messages.length} messages</p>
       </div>
 
       <ScrollArea className="flex-1 p-4">
-        <div className="space-y-4">
+        <div className="space-y-3">
           {messages.map((message) => (
-            <div key={message.id} className="bg-secondary rounded-lg p-3 space-y-2">
+            <div key={message.id} className="border-4 border-foreground p-3 space-y-2">
               <div className="flex items-start justify-between gap-2">
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-semibold text-primary truncate">
+                  <p className="text-sm font-black uppercase truncate">
                     {message.username}
                   </p>
-                  <p className="text-sm break-words">{message.content}</p>
+                  <p className="text-sm font-bold break-words">{message.content}</p>
                 </div>
               </div>
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
+              <div className="flex items-center justify-between text-xs font-bold text-muted-foreground">
                 <span>
                   {formatDistanceToNow(new Date(message.created_at), { addSuffix: true })}
                 </span>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-6 px-2 gap-1 hover:text-accent"
+                  className="h-6 px-2 gap-1 hover:bg-foreground hover:text-background font-black"
                   onClick={() => handleLikeMessage(message.id, message.likes)}
                 >
                   <Heart className="w-3 h-3" fill={message.likes > 0 ? 'currentColor' : 'none'} />
@@ -175,12 +175,12 @@ const Chat = ({ roomId }: ChatProps) => {
         </div>
       </ScrollArea>
 
-      <div className="p-4 border-t border-border space-y-2">
+      <div className="p-4 border-t-4 border-foreground space-y-2">
         <Input
           placeholder="Username (optional)"
           value={username}
           onChange={(e) => setUsername(e.target.value || 'Anonymous')}
-          className="bg-secondary"
+          className="bg-background border-4 border-foreground font-bold focus:ring-0 focus:border-foreground"
           maxLength={50}
         />
         <form onSubmit={handleSendMessage} className="flex gap-2">
@@ -188,21 +188,21 @@ const Chat = ({ roomId }: ChatProps) => {
             placeholder="Type a message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            className="bg-secondary"
+            className="bg-background border-4 border-foreground font-bold focus:ring-0 focus:border-foreground"
             maxLength={200}
             disabled={isSending}
           />
           <Button 
             type="submit" 
             size="icon"
-            className="bg-gradient-primary hover:opacity-90"
+            className="bg-foreground text-background hover:bg-background hover:text-foreground border-4 border-foreground h-12 w-12"
             disabled={isSending || !newMessage.trim()}
           >
             <Send className="w-4 h-4" />
           </Button>
         </form>
-        <p className="text-xs text-muted-foreground text-center">
-          {newMessage.length}/200 characters
+        <p className="text-xs font-bold text-muted-foreground text-center">
+          {newMessage.length}/200
         </p>
       </div>
     </div>

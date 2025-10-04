@@ -58,72 +58,65 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-background via-background to-primary/10">
-      <div className="w-full max-w-4xl space-y-8">
-        {/* Hero Section */}
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-primary mb-4 shadow-glow">
-            <Video className="w-10 h-10 text-white" />
+    <div className="min-h-screen bg-background p-4 md:p-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+          
+          {/* Hero Title - Full Width */}
+          <div className="md:col-span-12 border-4 border-foreground p-8 md:p-12">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 bg-foreground flex items-center justify-center">
+                <Video className="w-8 h-8 text-background" />
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight">
+                StreamSync
+              </h1>
+            </div>
+            <p className="text-xl md:text-2xl font-bold max-w-3xl">
+              Watch HLS streams together in real-time. Chat, like messages, and enjoy synchronized viewing.
+            </p>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-            StreamSync
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Watch HLS streams together in real-time with friends. Chat, like messages, and enjoy synchronized viewing.
-          </p>
-        </div>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Card className="border-primary/20 bg-card/50 backdrop-blur">
-            <CardContent className="pt-6 text-center space-y-2">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Video className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold">Multi-Player Support</h3>
-              <p className="text-sm text-muted-foreground">Switch between 6 different video players</p>
-            </CardContent>
-          </Card>
-          <Card className="border-accent/20 bg-card/50 backdrop-blur">
-            <CardContent className="pt-6 text-center space-y-2">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-accent/10">
-                <Users className="w-6 h-6 text-accent" />
-              </div>
-              <h3 className="font-semibold">Live Chat</h3>
-              <p className="text-sm text-muted-foreground">Chat in real-time with other viewers</p>
-            </CardContent>
-          </Card>
-          <Card className="border-primary/20 bg-card/50 backdrop-blur">
-            <CardContent className="pt-6 text-center space-y-2">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10">
-                <Zap className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="font-semibold">Instant Sync</h3>
-              <p className="text-sm text-muted-foreground">Everyone watches in perfect sync</p>
-            </CardContent>
-          </Card>
-        </div>
+          {/* Feature Box 1 */}
+          <div className="md:col-span-4 border-4 border-foreground p-6 bg-foreground text-background">
+            <Video className="w-12 h-12 mb-4" />
+            <h3 className="text-2xl font-black mb-2">MULTI-PLAYER</h3>
+            <p className="font-bold">Switch between 3 different video players</p>
+          </div>
 
-        {/* Create Room Form */}
-        <Card className="border-primary/30 shadow-glow">
-          <CardHeader>
-            <CardTitle className="text-2xl">Create a Watch Room</CardTitle>
-            <CardDescription>Enter an HLS stream URL to start watching together</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Feature Box 2 */}
+          <div className="md:col-span-4 border-4 border-foreground p-6">
+            <Users className="w-12 h-12 mb-4" />
+            <h3 className="text-2xl font-black mb-2">LIVE CHAT</h3>
+            <p className="font-bold">Chat in real-time with other viewers</p>
+          </div>
+
+          {/* Feature Box 3 */}
+          <div className="md:col-span-4 border-4 border-foreground p-6 bg-foreground text-background">
+            <Zap className="w-12 h-12 mb-4" />
+            <h3 className="text-2xl font-black mb-2">INSTANT SYNC</h3>
+            <p className="font-bold">Everyone watches in perfect sync</p>
+          </div>
+
+          {/* Create Room Form - Larger Box */}
+          <div className="md:col-span-12 border-4 border-foreground p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-black uppercase mb-2">Create a Watch Room</h2>
+            <p className="text-lg font-bold mb-8 text-muted-foreground">Enter an HLS stream URL to start watching together</p>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="roomName">Room Name (Optional)</Label>
+                <Label htmlFor="roomName" className="text-lg font-black uppercase">Room Name (Optional)</Label>
                 <Input
                   id="roomName"
                   placeholder="My Awesome Stream"
                   value={roomName}
                   onChange={(e) => setRoomName(e.target.value)}
-                  className="bg-secondary border-border"
+                  className="bg-background border-4 border-foreground h-14 text-lg font-bold focus:ring-0 focus:border-foreground"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="hlsUrl">HLS Stream URL *</Label>
+                <Label htmlFor="hlsUrl" className="text-lg font-black uppercase">HLS Stream URL *</Label>
                 <Input
                   id="hlsUrl"
                   type="url"
@@ -131,22 +124,22 @@ const Home = () => {
                   value={hlsUrl}
                   onChange={(e) => setHlsUrl(e.target.value)}
                   required
-                  className="bg-secondary border-border"
+                  className="bg-background border-4 border-foreground h-14 text-lg font-bold focus:ring-0 focus:border-foreground"
                 />
-                <p className="text-xs text-muted-foreground">
+                <p className="text-sm font-bold text-muted-foreground">
                   Must start with https:// and include .m3u8
                 </p>
               </div>
               <Button 
                 type="submit" 
-                className="w-full bg-gradient-primary hover:opacity-90 text-white font-semibold py-6 text-lg shadow-glow"
+                className="w-full bg-foreground text-background hover:bg-background hover:text-foreground border-4 border-foreground font-black text-xl uppercase h-16 transition-all"
                 disabled={isLoading}
               >
                 {isLoading ? 'Creating Room...' : 'Create Room & Start Watching'}
               </Button>
             </form>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   );

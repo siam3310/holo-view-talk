@@ -55,10 +55,10 @@ const Watch = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center space-y-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="text-muted-foreground">Loading room...</p>
+          <div className="animate-spin h-16 w-16 border-8 border-foreground border-t-transparent mx-auto"></div>
+          <p className="font-black text-xl uppercase">Loading room...</p>
         </div>
       </div>
     );
@@ -66,11 +66,11 @@ const Watch = () => {
 
   if (notFound || !room) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold">Room Not Found</h1>
-          <p className="text-muted-foreground">The room you're looking for doesn't exist.</p>
-          <a href="/" className="text-primary hover:underline">
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center space-y-6 border-4 border-foreground p-12">
+          <h1 className="text-5xl font-black uppercase">Room Not Found</h1>
+          <p className="font-bold text-xl">The room you're looking for doesn't exist.</p>
+          <a href="/" className="inline-block bg-foreground text-background px-8 py-4 font-black uppercase border-4 border-foreground hover:bg-background hover:text-foreground transition-all">
             Create a new room
           </a>
         </div>
